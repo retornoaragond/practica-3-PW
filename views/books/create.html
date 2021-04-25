@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- file: views/professor/index.html -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Esteban Espinoza Fallas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <title>{{title}} - Practica #3 PW Esteban Espinoza Fallas</title>
+</head>
+
+<body>
+    {{> navbar}}
+    <hr><br>
+    <div class="container">
+        <h2>{{title}}</h2>
+        <div class="row">
+            <form class="col s12" action="/books" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="title" name="title" type="text" class="validate">
+                        <label for="title">Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="edition" name="edition" type="text" class="validate">
+                        <label for="edition">Edition</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="copyright" name="copyright" type="number" class="validate">
+                        <label for="copyright">Copyright</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="language" name="language" type="text" class="validate">
+                        <label for="language">Language</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="pages" name="pages" type="number" class="validate">
+                        <label for="pages">Pages</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select name="author_id">
+                            <option value="" disabled selected></option>
+                            {{#authors}}
+                            <option value="{{id}}">{{author}}</option>
+                            {{/authors}}
+                        </select>
+                        <label>Autor</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="publisher_id">
+                            <option value="" disabled selected></option>
+                            {{#publishers}}
+                            <option value="{{id}}">{{publisher}}</option>
+                            {{/publishers}}
+                        </select>
+                        <label>Publisher</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Create
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        <a class="waves-effect waves-light btn-large" href="/books">BACK</a>
+    </div>
+    <br>
+    <br>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('select').formSelect();
+        });
+    </script>
+</body>
